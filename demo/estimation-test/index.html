@@ -27,6 +27,20 @@
 
 <div class="container ng-cloak" ng-controller="MainCtrl">
     <div class="row form-group">
+        <div class="col-lg-6">
+            <input class="form-control" type="text"
+                   ng-model="credentials.appId"
+                   ng-change="credentials.change()"
+                   placeholder="App ID"/>
+        </div>
+        <div class="col-lg-6">
+            <input class="form-control" type="text"
+                   ng-model="credentials.appKey"
+                   ng-change="credentials.change()"
+                   placeholder="App Key"/>
+        </div>
+    </div>
+    <div class="row form-group">
         <div class="col-lg-12">
             <textarea ng-model="data" class="form-control" rows="10"
                       placeholder="Enter products to estimate separated by the newline">
@@ -34,7 +48,7 @@
         </div>
     </div>
     <div class="row form-group">
-        <div class="col-lg-12">
+    <div class="col-lg-12">
             <button type="button" class="btn btn-success pull-right" ng-click="estimate()">
                 Estimate
             </button>

@@ -46,7 +46,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "nix.api",
       "shortDescription": "Used for configuring nix.api.service:nixApi service",
-      "keywords": "allows angularjs api appid appkey application base calls change compatible configuration configuring credentials defaults endpoint generated http https key method nix nutritionix object org override portal provider service service-wide set setendpoint sethttpconfig usage"
+      "keywords": "allows angularjs api appid appkey application base calls change compatible configuration configuring credentials defaults endpoint generated http https key method nix nutritionix object org override portal provider service service-wide set setapicredentials setendpoint sethttpconfig usage"
     },
     {
       "section": "api",
@@ -55,7 +55,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "nix.api",
       "shortDescription": "Used to make calls to nutritionix api",
-      "keywords": "angularjs api apiendpoint appid appkey build built call call-specific calls chain client config configuration credentials default endpoint final form function headers http https level low method methods_sethttpconfig nix nutritionix object org override params provider relative service top url usage x-app-id x-app-key"
+      "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific calls chain client config configuration credentials default endpoint final form function generated headers http https key level low method methods_sethttpconfig nix nutritionix object org override params portal provider relative service set setapicredentials top url usage x-app-id x-app-key"
     }
   ],
   "apis": {

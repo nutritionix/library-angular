@@ -70,7 +70,8 @@
     module.provider('nixApi', function nixApiProvider() {
         var apiEndpoint = 'https://api.nutritionix.com/v2',
             credentials = {},
-            httpConfig = {};
+            httpConfig = {},
+            setApiCredentials;
 
 
         /**
@@ -87,13 +88,13 @@
         /**
          * @ngdoc method
          * @methodOf nix.api.provider:nixApiProvider
-         * @name nix.api.provider:nixApiProvider#setEndpoint
+         * @name nix.api.provider:nixApiProvider#setApiCredentials
          * @param {string} appId Application id
          * @param {string} appKey Application Key
          *
          * @description Set api credentials generated at https://developer.nutritionix.com portal
          */
-        this.setApiCredentials = function (appId, appKey) {
+        setApiCredentials = this.setApiCredentials = function (appId, appKey) {
             credentials.appId = appId;
             credentials.appKey = appKey;
         };
@@ -163,6 +164,17 @@
 
                 return $http(config);
             };
+
+            /**
+             * @ngdoc method
+             * @methodOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#setApiCredentials
+             * @param {string} appId Application id
+             * @param {string} appKey Application Key
+             *
+             * @description Set api credentials generated at https://developer.nutritionix.com portal
+             */
+            nixApi.setApiCredentials = setApiCredentials;
 
             return nixApi;
         };

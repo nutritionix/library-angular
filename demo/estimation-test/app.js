@@ -7,11 +7,21 @@
     ]);
 
     module.config(function (nixApiProvider) {
-        nixApiProvider.setApiCredentials('db67f640', '6d3a917f26933266438f8c90c4fb061f');
+        // change to your credentials
+        nixApiProvider.setApiCredentials(null, null);
     });
 
 
     module.controller('MainCtrl', function ($scope, $filter, nixApi) {
+        // the way for demo to being usable in hosted version
+        $scope.credentials = {
+            appId:  null,
+            appKey: null,
+            change: function () {
+                nixApi.setApiCredentials(this.appId, this.appKey);
+            }
+        };
+
         $scope.columns = [
             {
                 header:     'qty',
