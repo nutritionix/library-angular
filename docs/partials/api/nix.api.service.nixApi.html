@@ -16,15 +16,15 @@ The last override in chain of default object and
 <a href="#/api/nix.api.provider:nixApiProvider#methods_sethttpconfig">nix.api.provider:nixApiProvider#methods_sethttpconfig</a> to form final http call config.</p>
 <p>Default object is built like that:
 <pre class="prettyprint linenums">
-    {
-          method:            'GET',
-          url:               'https://api.nutritionix.com/v2' + endpoint,
-          headers:           {
-              'X-APP-ID':  credentials.appId,
-              'X-APP-KEY': credentials.appKey
-          },
-          params:            {}
-      }
-    </pre>
+{
+    method:  'GET',
+    url:     apiEndpoint + endpoint,
+    headers: {
+        'X-APP-ID':  credentials.appId,
+        'X-APP-KEY': credentials.appKey
+    },
+    params:  {}
+}
+</pre>
 </div></td></tr></tbody></table></div>
 </div>

@@ -31,7 +31,7 @@ gulp.task('ngdocs', [], function () {
         title:     'Angular Nutritionix Api'
     };
 
-    del.sync(['./docs']);
+    del.sync(['./docs/*']);
 
     return gulp.src(libFile)
         .pipe(gulpDocs.process(options))

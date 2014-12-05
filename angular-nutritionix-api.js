@@ -68,7 +68,7 @@
      * Used for configuring {@link nix.api.service:nixApi} service
      */
     module.provider('nixApi', function nixApiProvider() {
-        var apiEndpoint = 'https://api.nutritionix.com/v2/',
+        var apiEndpoint = 'https://api.nutritionix.com/v2',
             credentials = {},
             httpConfig = {};
 
@@ -78,7 +78,7 @@
          * @methodOf nix.api.provider:nixApiProvider
          * @name nix.api:nixApiProvider#setEndpoint
          * @param {string} endpoint Allows to change nutritionix api base endpoint.
-         *                          Defaults to https://api.nutritionix.com/v2/
+         *                          Defaults to https://api.nutritionix.com/v2
          */
         this.setApiEndpoint = function (endpoint) {
             apiEndpoint = endpoint;
@@ -135,27 +135,27 @@
              *
              *                        Default object is built like that:
              *                        <pre>
-             *                            {
-             *                                  method:            'GET',
-             *                                  url:               'https://api.nutritionix.com/v2' + endpoint,
-             *                                  headers:           {
-             *                                      'X-APP-ID':  credentials.appId,
-             *                                      'X-APP-KEY': credentials.appKey
-             *                                  },
-             *                                  params:            {}
-             *                              }
-             *                            </pre>
+             *                        {
+             *                            method:  'GET',
+             *                            url:     apiEndpoint + endpoint,
+             *                            headers: {
+             *                                'X-APP-ID':  credentials.appId,
+             *                                'X-APP-KEY': credentials.appKey
+             *                            },
+             *                            params:  {}
+             *                        }
+             *                        </pre>
              */
             var nixApi = function (endpoint, config) {
                 config = module.deepMerge(
                     {
-                        method:            'GET',
-                        url:               'https://api.nutritionix.com/v2' + endpoint,
-                        headers:           {
+                        method:  'GET',
+                        url:     apiEndpoint + endpoint,
+                        headers: {
                             'X-APP-ID':  credentials.appId,
                             'X-APP-KEY': credentials.appKey
                         },
-                        params:            {}
+                        params:  {}
                     },
                     httpConfig,
                     config
