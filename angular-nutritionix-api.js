@@ -180,7 +180,7 @@
      * @param {string} id Nutrient attr_id to search for
      * @param {string} [attribute] property to immediately return from found nutrient
      *
-     * @returns {mixed} Nutrient object itself, or it's property named with the third param
+     * @returns {*} Nutrient object itself, or it's property named with the third param
      *
      */
     module.filter('nutrient', function () {
