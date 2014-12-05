@@ -1,0 +1,30 @@
+.hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #26b962;
+    margin-bottom: 15px;
+}
+
+#loading-bar .bar {
+    background: #ff0000;
+}
+
+/* Fancy blur effect */
+#loading-bar .peg {
+    -moz-box-shadow: #ff0000 1px 0 6px 1px;
+    -ms-box-shadow: #ff0000 1px 0 6px 1px;
+    -webkit-box-shadow: #ff0000 1px 0 6px 1px;
+    box-shadow: #ff0000 1px 0 6px 1px;
+}
+
+#loading-bar-spinner .spinner-icon {
+    border-top-color:  #ff0000;
+    border-left-color: #ff0000;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
