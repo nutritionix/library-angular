@@ -5,6 +5,7 @@ var ngAnnotate = require('gulp-ng-annotate');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var karma = require('gulp-karma');
+var del = require('del');
 
 var libFile = 'angular-nutritionix-api.js';
 
@@ -21,7 +22,23 @@ gulp.task('test', function () {
         });
 });
 
-gulp.task('build', function () {
+gulp.task('ngdocs', [], function () {
+    var gulpDocs = require('gulp-ngdocs');
+    var options = {
+        html5Mode: false,
+        startPage: '/api/nix.api',
+        titleLink: 'https://github.com/nutritionix/library-angular',
+        title:     'Angular Nutritionix Api'
+    };
+
+    del.sync(['./docs']);
+
+    return gulp.src(libFile)
+        .pipe(gulpDocs.process(options))
+        .pipe(gulp.dest('./docs'));
+});
+
+gulp.task('build', ['test', 'ngdocs'], function () {
 
     return gulp.src(libFile)
         .pipe(ngAnnotate())

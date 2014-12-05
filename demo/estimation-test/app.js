@@ -7,8 +7,7 @@
     ]);
 
     module.config(function (nixApiProvider) {
-        //TODO: set demo credential here
-        nixApiProvider.setApiCredentials(null, null);
+        nixApiProvider.setApiCredentials('db67f640', '6d3a917f26933266438f8c90c4fb061f');
     });
 
 

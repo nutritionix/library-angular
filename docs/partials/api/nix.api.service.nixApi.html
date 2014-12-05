@@ -1,0 +1,30 @@
+<h1><code ng:non-bindable="">nixApi</code>
+<div><span class="hint">service in module <code ng:non-bindable="">nix.api</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="nix-api-service-page nix-api-service-nixapi-page"><p>Used to make calls to nutritionix api
+Low level function to build api client on top of.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">nixApi(endpoint, config);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>endpoint</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-page"><p>Relative api endpoint url e.g. &#39;/estimated-nutrition/bulk&#39;</p>
+</div></td></tr><tr><td>config</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-page"><p>Call-specific override for http calls configuration object
+<a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a>
+The last override in chain of default object and
+<a href="#/api/nix.api.provider:nixApiProvider#methods_sethttpconfig">nix.api.provider:nixApiProvider#methods_sethttpconfig</a> to form final http call config.</p>
+<p>Default object is built like that:
+<pre class="prettyprint linenums">
+    {
+          method:            'GET',
+          url:               'https://api.nutritionix.com/v2' + endpoint,
+          headers:           {
+              'X-APP-ID':  credentials.appId,
+              'X-APP-KEY': credentials.appKey
+          },
+          params:            {}
+      }
+    </pre>
+</div></td></tr></tbody></table></div>
+</div>
