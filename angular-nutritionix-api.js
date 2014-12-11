@@ -176,6 +176,57 @@
              */
             nixApi.setApiCredentials = setApiCredentials;
 
+            /**
+             * @ngdoc method
+             * @methodOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#item
+             *
+             * @param {string|object} id Item <b>id</b> or <b>resource_id</b>
+             *
+             * @description Locate an item by its id or by a search `resource_id`
+             */
+            nixApi.item = function (id) {
+                if (angular.isObject(id)) {
+                    id = id.id || id.resource_id;
+                }
+
+                return nixApi('/item/' + id);
+            };
+
+            nixApi.search = {};
+
+            nixApi.search.standard = function (term, limit, offset, search_nutrient) {
+                var defaults = {
+                        q:               'salad',
+                        // use these for paging
+                        limit:           10,
+                        offset:          0,
+                        // controls the basic nutrient returned in search
+                        search_nutrient: 'calories'
+                    },
+                    params;
+
+                if (angular.isObject(term)) {
+                    params = term;
+                } else {
+                    params = {
+                        q:            term,
+                        limit:           limit,
+                        offset:          offset,
+                        search_nutrient: search_nutrient
+                    };
+                }
+
+                angular.forEach(defaults, function (value, key) {
+                    if (!params[key]) {
+                        params[key] = value;
+                    }
+                });
+
+                return nixApi('/search', {params: params});
+
+            };
+
             return nixApi;
         };
     });
