@@ -6,12 +6,21 @@ var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var karma = require('gulp-karma');
 var del = require('del');
+var webserver = require('gulp-webserver');
+var watch = require('gulp-watch');
+var plumber = require('gulp-plumber');
 
 var libFile = 'angular-nutritionix-api.js';
+
+var server = {
+    host: 'localhost',
+    port: '8001'
+};
 
 gulp.task('test', function () {
     // Be sure to return the stream
     return gulp.src('-')
+        .pipe(plumber())
         .pipe(karma({
             configFile: 'karma.conf.js',
             action:     'run'
@@ -52,5 +61,17 @@ gulp.task('default', function () {
         .pipe(karma({
             configFile: 'karma.conf.js',
             action:     'watch'
+        }));
+});
+
+gulp.task('serve', ['build'], function () {
+    gulp.watch(libFile, ['build']);
+
+    gulp.src( '.' )
+        .pipe(webserver({
+            host:             server.host,
+            port:             server.port,
+            livereload:       false,
+            directoryListing: true
         }));
 });

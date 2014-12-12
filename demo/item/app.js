@@ -14,7 +14,7 @@
 
 
     module.controller('MainCtrl', function ($scope, $filter, nixApi, $q) {
-        nixApi.search.standard('Greek Yogurt')
+        nixApi.search('Greek Yogurt')
             .then(function (response) {
                 if (response.data.results && response.data.results.length) {
                     return response.data.results[0].resource_id;

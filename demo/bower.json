@@ -1,0 +1,15 @@
+{
+  "name": "demo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/nutritionix/library-angular",
+  "authors": [
+    "Yura Fedoriv <yurko.fedoriv@gmail.com>"
+  ],
+  "description": "demo",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular-loading-bar": "~0.6.0",
+    "json-formatter": "~0.2.5"
+  }
+}

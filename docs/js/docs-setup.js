@@ -9,8 +9,8 @@ NG_DOCS={
       "shortName": "index",
       "type": "overview",
       "moduleName": "index",
-      "shortDescription": "Angularjs client library to make calls to nutritionix API",
-      "keywords": "angularjs api calls client library nutritionix overview"
+      "shortDescription": "Angularjs client library to make calls to",
+      "keywords": "angularjs api calls client href https library nutritionix overview"
     },
     {
       "section": "api",
@@ -54,8 +54,8 @@ NG_DOCS={
       "shortName": "nixApi",
       "type": "service",
       "moduleName": "nix.api",
-      "shortDescription": "Used to make calls to nutritionix api",
-      "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific calls chain client config configuration credentials default endpoint final form function generated headers http https key level low method methods_sethttpconfig nix nutritionix object org override params portal provider relative service set setapicredentials top url usage x-app-id x-app-key"
+      "shortDescription": "Used to make calls to nutritionix api.",
+      "keywords": "accurate aims allow allows analysis angularjs api apiendpoint appid appkey application array attempts autocomplete based brand brand_search build built caclulator calculating calculator call call-specific calls chain client config configuration convenience cpg credentials data default desktop easy endpoint exact_match exactly explicitly fast final find foods form full function generated goods gram_weight headers http https identifier include item key level limit locate low making match maximum method methods methods_sethttpconfig mobile multiplier natural nix nutrients nutritionix object offset org override package paging parameter params pass passed phrase plain plane portal prefix principles provider relative requires resource_id response responsive restaurant search separated service service-function set setapicredentials side spectrum standard suggestions text top total translate true type url usage usda users v2 version wrappers x-app-id x-app-key"
     }
   ],
   "apis": {

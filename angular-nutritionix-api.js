@@ -6,7 +6,9 @@
      * @name index
      *
      * @description
-     * Angularjs client library to make calls to nutritionix API
+     * Angularjs client library to make calls to
+     * <a href="https://developer.nutritionix.com/docs/v2">nutritionix API</a>
+     *
      */
 
     /**
@@ -125,8 +127,9 @@
              *
              * @description
              *
-             * Used to make calls to nutritionix api
+             * Used to make calls to nutritionix api.
              * Low level function to build api client on top of.
+             * All service methods are wrappers around service-function calls.
              *
              * @param {string} endpoint Relative api endpoint url e.g. '/estimated-nutrition/bulk'
              * @param {object} config Call-specific override for http calls configuration object
@@ -179,25 +182,62 @@
             /**
              * @ngdoc method
              * @methodOf nix.api.service:nixApi
-             * @name nix.api.service:nixApi#item
+             * @name nix.api.service:nixApi#autocomplete
              *
-             * @param {string|object} id Item <b>id</b> or <b>resource_id</b>
+             * @param {string} q A search phrase prefix in plain text
              *
-             * @description Locate an item by its id or by a search `resource_id`
+             * @description The V2 autocomplete API aims to allow users the convenience of "as you type" suggestions.
              */
-            nixApi.item = function (id) {
-                if (angular.isObject(id)) {
-                    id = id.id || id.resource_id;
-                }
+            nixApi.autocomplete = function (q) {
+                var params = angular.isObject(q) ? q : {q: q};
 
-                return nixApi('/item/' + id);
+                return nixApi('/autocomplete', {params: params});
             };
 
-            nixApi.search = {};
+            /**
+             * @ngdoc method
+             * @methodOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#natural
+             *
+             * @param {string} data Plain text with each phrase separated by a new line.
+             * @param {number} gram_weight Multiplier when calculating total.nutrients
+             *
+             * @description The natural endpoint allows you to translate plane text into a full spectrum analysis.
+             */
+            nixApi.natural = function (data, gram_weight) {
+                return nixApi('/natural', {
+                    method:  'POST',
+                    data:    data,
+                    params:  gram_weight ? {gram_weight: gram_weight} : {},
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    }
+                });
+            };
 
-            nixApi.search.standard = function (term, limit, offset, search_nutrient) {
+            /**
+             * @ngdoc method
+             * @methodOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#search
+             *
+             * @param {string|object} q The search phrase in plain text.
+             *                          Full configuration object can also be passed as first parameter
+             * @param {number} [limit]  Maximum results in response Requires offset
+             * @param {number} [offset] Search offset for paging through results Requires limit
+             * @param {string} [search_nutrient] Search offset for paging through results Requires limit
+             *
+             * @description
+             *
+             * The V2 search API gives you fast, responsive, and accurate results for cpg (consumer package goods),
+             * USDA, and restaurant foods.
+             * This version of search is based on autocomplete principles making it easy for you to show your
+             * users exactly what they're looking for.
+             * The API also attempts to find an exact_match for the search phrase and will explicitly tell you when
+             * a match has been found along side your standard results.
+             */
+            nixApi.search = function (q, limit, offset, search_nutrient) {
                 var defaults = {
-                        q:               'salad',
+                        q:               null,
                         // use these for paging
                         limit:           10,
                         offset:          0,
@@ -206,11 +246,11 @@
                     },
                     params;
 
-                if (angular.isObject(term)) {
-                    params = term;
+                if (angular.isObject(q)) {
+                    params = q;
                 } else {
                     params = {
-                        q:            term,
+                        q:               q,
                         limit:           limit,
                         offset:          offset,
                         search_nutrient: search_nutrient
@@ -225,6 +265,108 @@
 
                 return nixApi('/search', {params: params});
 
+            };
+
+            /**
+             * @ngdoc method
+             * @methodOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#brand_search
+             *
+             * @param {string|object}   q              The search phrase in plain text.
+             *                                         Full configuration object can also be passed as first parameter
+             *
+             * @param {number|number[]} type           1=restaurant, 2=CPG, 3=USDA / Nutritionix.
+             *                                         You can pass more than one type using an array
+             *
+             * @param {number}          [limit]        Maximum results in response Requires offset
+             *
+             * @param {number}          [offset]       Search offset for paging through results Requires limit
+             *
+             * @param {boolean}         [mobile_calc]  Set to true to include mobile restaurant caclulator url
+             *
+             * @param {boolean}         [desktop_calc] Set to true to include desktop restaurant calculator url
+             *
+             * @description
+             *
+             * The V2 search API gives you fast, responsive, and accurate results for cpg (consumer package goods),
+             * USDA, and restaurant foods.
+             * This version of search is based on autocomplete principles making it easy for you to show your
+             * users exactly what they're looking for.
+             * The API also attempts to find an exact_match for the search phrase and will explicitly tell you when
+             * a match has been found along side your standard results.
+
+             */
+            nixApi.brand_search = function (q, type, limit, offset, mobile_calc, desktop_calc) {
+                var defaults = {
+                        q:    null,
+                        type: 1
+                    },
+                    params;
+
+                if (angular.isObject(q)) {
+                    params = q;
+                } else {
+                    params = {
+                        q:    q,
+                        type: type
+                    };
+
+                    if (limit || offset) {
+                        params.limit = limit;
+                        params.offset = offset;
+                    }
+
+                    if (mobile_calc) {
+                        params.mobile_calc = 'true';
+                    }
+
+                    if (desktop_calc) {
+                        params.desktop_calc = 'true';
+                    }
+                }
+
+                angular.forEach(defaults, function (value, key) {
+                    if (!params[key]) {
+                        params[key] = value;
+                    }
+                });
+
+                return nixApi('/search/brands', {params: params});
+
+            };
+
+            /**
+             * @ngdoc method
+             * @methodOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#item
+             *
+             * @param {string} id Item <b>id</b> or <b>resource_id</b>
+             *
+             * @description Locate an item by its id or by a search `resource_id`
+             */
+            nixApi.item = function (id) {
+                if (angular.isObject(id)) {
+                    id = id.id || id.resource_id;
+                }
+
+                return nixApi('/item/' + id);
+            };
+
+            /**
+             * @ngdoc method
+             * @methodOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#brand
+             *
+             * @param {string} id the identifier for the brand
+             *
+             * @description Locate a brand by its id
+             */
+            nixApi.brand = function (id) {
+                if (angular.isObject(id)) {
+                    id = id.id;
+                }
+
+                return nixApi('/brand/' + id);
             };
 
             return nixApi;

@@ -4,8 +4,9 @@
 </div>
 </h1>
 <div><h2 id="description">Description</h2>
-<div class="description"><div class="nix-api-service-page nix-api-service-nixapi-page"><p>Used to make calls to nutritionix api
-Low level function to build api client on top of.</p>
+<div class="description"><div class="nix-api-service-page nix-api-service-nixapi-page"><p>Used to make calls to nutritionix api.
+Low level function to build api client on top of.
+All service methods are wrappers around service-function calls.</p>
 </div></div>
 <h2 id="usage">Usage</h2>
 <div class="usage"><pre class="prettyprint linenums">nixApi(endpoint, config);</pre>
@@ -28,7 +29,59 @@ The last override in chain of default object and
 </pre>
 </div></td></tr></tbody></table></div>
 <div class="member method"><h2 id="methods">Methods</h2>
-<ul class="methods"><li><h3 id="methods_setapicredentials">setApiCredentials(appId, appKey)</h3>
+<ul class="methods"><li><h3 id="methods_autocomplete">autocomplete(q)</h3>
+<div class="autocomplete"><div class="nix-api-service-page nix-api-service-nixapi-autocomplete-page"><p>The V2 autocomplete API aims to allow users the convenience of &quot;as you type&quot; suggestions.</p>
+</div><h5 id="methods_autocomplete_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>q</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-autocomplete-page"><p>A search phrase prefix in plain text</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_brand">brand(id)</h3>
+<div class="brand"><div class="nix-api-service-page nix-api-service-nixapi-brand-page"><p>Locate a brand by its id</p>
+</div><h5 id="methods_brand_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-brand-page"><p>the identifier for the brand</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_brand_search">brand_search(q, type, [limit], [offset], [mobile_calc], [desktop_calc])</h3>
+<div class="brand_search"><div class="nix-api-service-page nix-api-service-nixapi-brand-search-page"><p>The V2 search API gives you fast, responsive, and accurate results for cpg (consumer package goods),
+USDA, and restaurant foods.
+This version of search is based on autocomplete principles making it easy for you to show your
+users exactly what they&#39;re looking for.
+The API also attempts to find an exact_match for the search phrase and will explicitly tell you when
+a match has been found along side your standard results.</p>
+</div><h5 id="methods_brand_search_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>q</td><td><a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-brand-search-page"><p>The search phrase in plain text.
+Full configuration object can also be passed as first parameter</p>
+</div></td></tr><tr><td>type</td><td><a href="" class="label type-hint type-hint-number">number</a><a href="" class="label type-hint type-hint-number">number[]</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-brand-search-page"><p>1=restaurant, 2=CPG, 3=USDA / Nutritionix.
+You can pass more than one type using an array</p>
+</div></td></tr><tr><td>[limit]</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-brand-search-page"><p>Maximum results in response Requires offset</p>
+</div></td></tr><tr><td>[offset]</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-brand-search-page"><p>Search offset for paging through results Requires limit</p>
+</div></td></tr><tr><td>[mobile_calc]</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-brand-search-page"><p>Set to true to include mobile restaurant caclulator url</p>
+</div></td></tr><tr><td>[desktop_calc]</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-brand-search-page"><p>Set to true to include desktop restaurant calculator url</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_item">item(id)</h3>
+<div class="item"><div class="nix-api-service-page nix-api-service-nixapi-item-page"><p>Locate an item by its id or by a search <code>resource_id</code></p>
+</div><h5 id="methods_item_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-item-page"><p>Item <b>id</b> or <b>resource_id</b></p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_natural">natural(data, gram_weight)</h3>
+<div class="natural"><div class="nix-api-service-page nix-api-service-nixapi-natural-page"><p>The natural endpoint allows you to translate plane text into a full spectrum analysis.</p>
+</div><h5 id="methods_natural_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-natural-page"><p>Plain text with each phrase separated by a new line.</p>
+</div></td></tr><tr><td>gram_weight</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-natural-page"><p>Multiplier when calculating total.nutrients</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_search">search(q, [limit], [offset], [search_nutrient])</h3>
+<div class="search"><div class="nix-api-service-page nix-api-service-nixapi-search-page"><p>The V2 search API gives you fast, responsive, and accurate results for cpg (consumer package goods),
+USDA, and restaurant foods.
+This version of search is based on autocomplete principles making it easy for you to show your
+users exactly what they&#39;re looking for.
+The API also attempts to find an exact_match for the search phrase and will explicitly tell you when
+a match has been found along side your standard results.</p>
+</div><h5 id="methods_search_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>q</td><td><a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-search-page"><p>The search phrase in plain text.
+Full configuration object can also be passed as first parameter</p>
+</div></td></tr><tr><td>[limit]</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-search-page"><p>Maximum results in response Requires offset</p>
+</div></td></tr><tr><td>[offset]</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-search-page"><p>Search offset for paging through results Requires limit</p>
+</div></td></tr><tr><td>[search_nutrient]</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-search-page"><p>Search offset for paging through results Requires limit</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setapicredentials">setApiCredentials(appId, appKey)</h3>
 <div class="setapicredentials"><div class="nix-api-service-page nix-api-service-nixapi-setapicredentials-page"><p>Set api credentials generated at <a href="https://developer.nutritionix.com">https://developer.nutritionix.com</a> portal</p>
 </div><h5 id="methods_setapicredentials_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>appId</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-setapicredentials-page"><p>Application id</p>
 </div></td></tr><tr><td>appKey</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-api-service-page nix-api-service-nixapi-setapicredentials-page"><p>Application Key</p>

@@ -1,0 +1,50 @@
+.item-name {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.brand-name {
+    color: #aaa;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.table-lead tr td {
+    font-size: 16px !important;
+}
+
+/* Custom, iPhone Retina */
+@media (min-width: 320px) {
+    body {
+        padding-top: 20px;
+    }
+
+    .text-center-xs {
+        text-align: center;
+    }
+}
+
+/* Small Devices, Tablets */
+@media (min-width: 768px) {
+    .text-center-xs {
+        text-align: left;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media (min-width : 992px) {
+    body {
+        padding-top: 40px;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media (min-width : 1200px) {
+    body {
+        padding-top: 40px;
+    }
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
