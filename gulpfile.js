@@ -52,7 +52,7 @@ gulp.task('build', ['test', 'ngdocs'], function () {
     return gulp.src(libFile)
         .pipe(ngAnnotate())
         .pipe(rename("angular-nutritionix-api.min.js"))
-        .pipe(uglify())
+        .pipe(uglify({preserveComments: 'some'}))
         .pipe(gulp.dest('.'));
 });
 

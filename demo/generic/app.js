@@ -4,6 +4,7 @@
     var module = angular.module('demo', [
         'angular-loading-bar',
         'jsonFormatter',
+        'hljs',
         'nix.api'
     ]);
 
@@ -32,25 +33,28 @@
             });
 
         nixApi.search('Greek Yogurt')
-            .then(function (response) {
-                $scope.search = response.data;
+            .success(function (search) {
+                $scope.search = search;
             });
 
-        nixApi.brand_search('mcdon', [1,3])
-            .then(function (response) {
-                $scope.brandSearch = response.data;
+        nixApi.brand_search('mcdon', [1, 3])
+            .success(function (brandSearch) {
+                $scope.brandSearch = brandSearch;
             });
 
-        nixApi.item('8GkO3').then(function (response) {
-            $scope.item = response.data;
-        });
+        nixApi.item('8GkO3')
+            .success(function (item) {
+                $scope.item = item;
+            });
 
-        nixApi.item('0kGURkwz').then(function (response) {
-            $scope.itemByResource = response.data;
-        });
+        nixApi.item('0kGURkwz')
+            .success(function (item) {
+                $scope.itemByResource = item;
+            });
 
-        nixApi.brand('B1J9').then(function (response) {
-            $scope.brand = response.data;
-        })
+        nixApi.brand('B1J9')
+            .success(function (brand) {
+                $scope.brand = brand;
+            });
     });
 })();

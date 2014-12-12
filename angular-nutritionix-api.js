@@ -1,3 +1,9 @@
+/**
+ * @license Angular Nutritionix Api
+ * (c) 2014 Nutritionix, LLC. http://nutritinix.com
+ * License: MIT
+ */
+
 (function (window, angular, undefined) {
     'use strict';
 
