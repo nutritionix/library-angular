@@ -6,27 +6,35 @@
         'nix.api'
     ]);
 
-    module.config(function (nixApiProvider) {
+    module.config(function (nixApiProvider, $locationProvider) {
         // change to your credentials
         nixApiProvider.setApiCredentials(null, null);
         nixApiProvider.setApiEndpoint('https://api0.nutritionix.com/v2');
+        $locationProvider.html5Mode({enabled: true, requireBase: false});
     });
 
+    module.constant(
+        'macronutrients',
+        [208, 204, 606, 205, 291, 269, 203]
+        // calories 208, fat 204, satfat 606, totalcarb 205, fiber 291, sugar 269, protein 203
+    );
 
-    module.controller('MainCtrl', function ($scope, $filter, nixApi, $q) {
-        nixApi.search('Greek Yogurt')
-            .then(function (response) {
-                if (response.data.results && response.data.results.length) {
-                    return response.data.results[0].resource_id;
-                }
 
-                return $q.reject('Item not found');
-            })
-            .then(function (resource_id) {
-                return nixApi.item(resource_id);
-            })
-            .then(function (response) {
-                $scope.item = response.data;
+    module.controller('MainCtrl', function ($scope, $filter, nixApi, $q, $location, macronutrients) {
+        console.log($location.search());
+
+        var promise;
+
+        if ($location.search().id) {
+            promise = nixApi.item($location.search().id)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+
+        if (promise) {
+            promise.then(function (item) {
+                $scope.item = item;
 
                 $scope.nutrients = {
                     macro: [],
@@ -34,11 +42,16 @@
                 };
 
                 angular.forEach($scope.item.label.nutrients, function (nutrient) {
-                    if (nutrient.attr_id.toString()[0] === '2') {
-                        $scope.nutrients.macro.push(nutrient);
+                    var index = macronutrients.indexOf(nutrient.attr_id);
+                    if (index !== -1) {
+                        $scope.nutrients.macro[index] = nutrient;
                     } else {
                         $scope.nutrients.micro.push(nutrient);
                     }
+                });
+
+                $scope.nutrients.macro = $filter('filter')($scope.nutrients.macro, function (element) {
+                    return !!element;
                 });
 
                 $scope.nutrients.macro.showAll = $scope.nutrients.micro.showAll = false;
@@ -46,8 +59,9 @@
                 $scope.nutrients.macro.less = $scope.nutrients.macro.slice(0, 3);
                 $scope.nutrients.micro.less = $scope.nutrients.micro.slice(0, 3);
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
     });
 })();
