@@ -15,7 +15,8 @@
 
     module.constant(
         'macronutrients',
-        [208, 203, 204, 205, 207]
+        [208, 204, 606, 205, 291, 269, 203]
+        // calories 208, fat 204, satfat 606, totalcarb 205, fiber 291, sugar 269, protein 203
     );
 
 
