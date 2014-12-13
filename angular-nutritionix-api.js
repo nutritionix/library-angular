@@ -114,8 +114,9 @@
          * @param {object} value configuration object compatible with
          *                       https://docs.angularjs.org/api/ng/service/$http#usage
          *
-         * @description Set service-wide override for http calls configuration object
-         *                       https://docs.angularjs.org/api/ng/service/$http#usage
+         * @description
+         * Set service-wide override for http calls configuration object
+         * {@link https://docs.angularjs.org/api/ng/service/$http#usage}
          */
         this.setHttpConfig = function (value) {
             if (angular.isObject(value)) {
@@ -132,7 +133,6 @@
              * @function
              *
              * @description
-             *
              * Used to make calls to nutritionix api.
              * Low level function to build api client on top of.
              * All service methods are wrappers around service-function calls.
@@ -181,7 +181,8 @@
              * @param {string} appId Application id
              * @param {string} appKey Application Key
              *
-             * @description Set api credentials generated at https://developer.nutritionix.com portal
+             * @description
+             * Set api credentials generated at https://developer.nutritionix.com portal
              */
             nixApi.setApiCredentials = setApiCredentials;
 
@@ -212,7 +213,10 @@
              *
              * @param {string} q A search phrase prefix in plain text
              *
-             * @description The V2 autocomplete API aims to allow users the convenience of "as you type" suggestions.
+             * @description
+             * The V2 autocomplete API aims to allow users the convenience of "as you type" suggestions.
+             *
+             * {@link https://developer.nutritionix.com/docs/v2/autocomplete}
              */
             nixApi.autocomplete = function (q) {
                 var params = angular.isObject(q) ? q : {q: q};
@@ -228,7 +232,10 @@
              * @param {string} data Plain text with each phrase separated by a new line.
              * @param {number} [gram_weight] Multiplier when calculating total.nutrients
              *
-             * @description The natural endpoint allows you to translate plane text into a full spectrum analysis.
+             * @description
+             * The natural endpoint allows you to translate plane text into a full spectrum analysis.
+             *
+             * {@link https://developer.nutritionix.com/docs/v2/natural}
              */
             nixApi.natural = function (data, gram_weight) {
                 return nixApi('/natural', {
@@ -260,6 +267,8 @@
              * users exactly what they're looking for.
              * The API also attempts to find an exact_match for the search phrase and will explicitly tell you when
              * a match has been found along side your standard results.
+             *
+             * {@link https://developer.nutritionix.com/docs/v2/search}
              */
             nixApi.search = function (q, limit, offset, search_nutrient) {
                 var defaults = {
@@ -313,14 +322,14 @@
              * @param {boolean}         [desktop_calc] Set to true to include desktop restaurant calculator url
              *
              * @description
-             *
              * The V2 search API gives you fast, responsive, and accurate results for cpg (consumer package goods),
              * USDA, and restaurant foods.
              * This version of search is based on autocomplete principles making it easy for you to show your
              * users exactly what they're looking for.
              * The API also attempts to find an exact_match for the search phrase and will explicitly tell you when
              * a match has been found along side your standard results.
-
+             *
+             * {@link https://developer.nutritionix.com/docs/v2/brand_search}
              */
             nixApi.brand_search = function (q, type, limit, offset, mobile_calc, desktop_calc) {
                 var defaults = {
@@ -368,7 +377,10 @@
              *
              * @param {string} id Item <b>id</b> or <b>resource_id</b>
              *
-             * @description Locate an item by its id or by a search `resource_id`
+             * @description
+             * Locate an item by its id or by a search `resource_id`
+             *
+             * {@link https://developer.nutritionix.com/docs/v2/item}
              */
             nixApi.item = function (id) {
                 if (angular.isObject(id)) {
@@ -385,7 +397,10 @@
              *
              * @param {string} id the identifier for the brand
              *
-             * @description Locate a brand by its id
+             * @description
+             * Locate a brand by its id
+             *
+             * {@link https://developer.nutritionix.com/docs/v2/brand}
              */
             nixApi.brand = function (id) {
                 if (angular.isObject(id)) {

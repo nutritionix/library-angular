@@ -1,14 +1,73 @@
-<html>
+<!DOCTYPE html>
+<html lang='en'>
 <head>
     <title>Angular Nutritionix API</title>
-</head>
-<body>
-<a href="./docs/index.html">Docs</a>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<h1>Demos</h1>
-<ul>
-    <li><a href="./demo/generic/index.html">Generic</a></li>
-    <li><a href="./demo/item/index.html">View Item Page</a></li>
-</ul>
+    <!--[if lt IE 9]>
+    <script type='text/javascript' src='assets/javascript/html5.js'></script><![endif]-->
+    <script type='text/javascript' src='assets/javascript/prettify.js'></script>
+    <script type='text/javascript' src='assets/js/jquery-2.1.0.min.js'></script>
+    <script type='text/javascript' src='assets/js/bootstrap.js'></script>
+
+    <link rel='stylesheet' type='text/css' href='assets/css/style.css'/>
+    <link rel='stylesheet' type='text/css' href='assets/css/bootstrap.css'/>
+    <link rel='stylesheet' type='text/css' href='assets/css/prettify.css'/>
+</head>
+<body onload='prettyPrint()'>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://nutritionix.com">Nutritionix LLC</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="docs/index.html">Docs</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Demos <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="demo/generic/index.html">Generic</a></li>
+                        <li><a href="demo/item/index.html?id=8GkO3">View Item Page</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<section class="panel jumbotron">
+    <h1>Angular Nutritionix API</h1>
+
+    <a class='btn btn-primary btn-lg' href='https://github.com/nutritionix/library-angular/zipball/master'>Download</a>
+
+    <br/><br/>
+    <div>
+        Library for fetching data from
+        <a href="https://developer.nutritionix.com/docs/v2">Nutritionix API</a> endpoints withing
+        AngularJS applications
+    </div>
+</section>
+
+<footer>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://nutritionix.com">Nutritionix LLC</a>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</footer>
 </body>
 </html>

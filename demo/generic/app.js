@@ -14,8 +14,7 @@
         nixApiProvider.setApiEndpoint('https://api0.nutritionix.com/v2');
     });
 
-
-    module.controller('MainCtrl', function ($scope, $filter, nixApi, $q) {
+    module.controller('MainCtrl', function ($scope, nixApi) {
         nixApi.autocomplete('apple')
             .success(function (suggestions) {
                 $scope.autocomplete = suggestions;

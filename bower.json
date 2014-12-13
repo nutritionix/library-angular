@@ -20,7 +20,9 @@
     "test",
     "tests",
     "gulpfile.js",
-    "karma.conf.js"
+    "karma.conf.js",
+    "index.html",
+    "assets"
   ],
   "dependencies": {
     "angular": "~1.3.5"
