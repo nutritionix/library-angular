@@ -186,6 +186,26 @@
             nixApi.setApiCredentials = setApiCredentials;
 
             /**
+             * @ngdoc property
+             * @propertyOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#macronutrients
+             * @type {number[]}
+             *
+             * @description
+             * List of ids of nutrients considered as  Macronutrients
+             *
+             * - **208** calories
+             * - **204** fat
+             * - **606** satfat
+             * - **205** totalcarb
+             * - **291** fiber
+             * - **269** sugar
+             * - **203** protein
+             */
+            nixApi.macronutrients = [208, 204, 606, 205, 291, 269, 203];
+
+
+            /**
              * @ngdoc method
              * @methodOf nix.api.service:nixApi
              * @name nix.api.service:nixApi#autocomplete
@@ -206,7 +226,7 @@
              * @name nix.api.service:nixApi#natural
              *
              * @param {string} data Plain text with each phrase separated by a new line.
-             * @param {number} gram_weight Multiplier when calculating total.nutrients
+             * @param {number} [gram_weight] Multiplier when calculating total.nutrients
              *
              * @description The natural endpoint allows you to translate plane text into a full spectrum analysis.
              */
@@ -407,6 +427,61 @@
             }
 
             return null;
+        };
+    });
+
+    /**
+     * @ngdoc filter
+     * @name nix.api.filter:naturalToItem
+     * @function
+     *
+     * @description
+     * Converts element from natural endpoint's results array to item-like structured object
+     *
+     * @param {object} natural One of natural endpoint results
+     *
+     * @returns {object} Item-like structured object
+     *
+     */
+    module.filter('naturalToItem', function () {
+        return function naturalToItem(natural) {
+            if (angular.isObject(natural)) {
+                return  {
+                    id:                   null,
+                    name:                 natural.parsed_query.food,
+                    type:                 null,
+                    tags:                 [],
+                    ingredient_statement: null,
+                    brand:                {
+                        id:      null,
+                        name:    null,
+                        website: null,
+                        logo:    null
+                    },
+                    images:               {
+                        front: {
+                            full:  null,
+                            thumb: null
+                        },
+                        label: {
+                            full: null
+                        }
+                    },
+
+                    label: {
+                        nutrients: natural.nutrients,
+                        serving:   {
+                            qty:           natural.serving_qty,
+                            uom:           natural.serving_unit,
+                            per_container: null,
+                            metric:        {
+                                qty: natural.serving_weight,
+                                uom: "g"
+                            }
+                        }
+                    }
+                };
+            }
         };
     });
 })(window, window.angular);

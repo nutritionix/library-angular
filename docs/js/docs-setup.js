@@ -23,6 +23,15 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "nix.api.filter:naturalToItem",
+      "shortName": "naturalToItem",
+      "type": "filter",
+      "moduleName": "nix.api",
+      "shortDescription": "Converts element from natural endpoint&#39;s results array to item-like structured object",
+      "keywords": "api array converts element endpoint filter item-like natural nix object structured"
+    },
+    {
+      "section": "api",
       "id": "nix.api.filter:nutrient",
       "shortName": "nutrient",
       "type": "filter",
@@ -55,7 +64,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "nix.api",
       "shortDescription": "Used to make calls to nutritionix api.",
-      "keywords": "accurate aims allow allows analysis angularjs api apiendpoint appid appkey application array attempts autocomplete based brand brand_search build built caclulator calculating calculator call call-specific calls chain client config configuration convenience cpg credentials data default desktop easy endpoint exact_match exactly explicitly fast final find foods form full function generated goods gram_weight headers http https identifier include item key level limit locate low making match maximum method methods methods_sethttpconfig mobile multiplier natural nix nutrients nutritionix object offset org override package paging parameter params pass passed phrase plain plane portal prefix principles provider relative requires resource_id response responsive restaurant search separated service service-function set setapicredentials side spectrum standard suggestions text top total translate true type url usage usda users v2 version wrappers x-app-id x-app-key"
+      "keywords": "accurate aims allow allows analysis angularjs api apiendpoint appid appkey application array attempts autocomplete based brand brand_search build built caclulator calculating calculator call call-specific calls calories chain client config configuration considered convenience cpg credentials data default desktop easy endpoint exact_match exactly explicitly fast fat fiber final find foods form full function generated goods headers http https identifier ids include item key level limit list locate low macronutrients making match maximum method methods methods_sethttpconfig mobile multiplier natural nix nutrients nutritionix object offset org override package paging parameter params pass passed phrase plain plane portal prefix principles property protein provider relative requires resource_id response responsive restaurant satfat search separated service service-function set setapicredentials side spectrum standard sugar suggestions text top total totalcarb translate true type url usage usda users v2 version wrappers x-app-id x-app-key"
     }
   ],
   "apis": {
