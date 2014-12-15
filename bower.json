@@ -21,7 +21,7 @@
     "tests",
     "gulpfile.js",
     "karma.conf.js",
-    "index.html",
+    "/index.html",
     "assets"
   ],
   "dependencies": {
