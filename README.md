@@ -27,6 +27,7 @@ angular.module('myApp', ['nix.api']);
 Load service into your controller and call it's endpoints
 
 Please refer to [API reference](http://nutritionix.github.io/library-angular/docs/#/api/nix.api)
+and examples on [homepage](http://nutritionix.github.io/library-angular/)
 
 ```javascript
 module.controller('MainCtrl', function ($scope, nixApi) {
