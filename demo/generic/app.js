@@ -10,7 +10,7 @@
 
     module.config(function (nixApiProvider) {
         // change to your credentials
-        nixApiProvider.setApiCredentials(null, null);
+        nixApiProvider.setApiCredentials('db67f640', '6d3a917f26933266438f8c90c4fb061f');
         nixApiProvider.setApiEndpoint('https://api0.nutritionix.com/v2');
     });
 
@@ -24,7 +24,7 @@
             [
                 '1 tbsp sugar',
                 '16 fl oz water',
-                '1/2 lemon',
+                '1/2 lemon'
             ].join('\n')
         )
             .success(function (natural) {
