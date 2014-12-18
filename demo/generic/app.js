@@ -11,7 +11,6 @@
     module.config(function (nixApiProvider) {
         // change to your credentials
         nixApiProvider.setApiCredentials('db67f640', '6d3a917f26933266438f8c90c4fb061f');
-        nixApiProvider.setApiEndpoint('https://api0.nutritionix.com/v2');
     });
 
     module.controller('MainCtrl', function ($scope, nixApi) {

@@ -8,20 +8,11 @@
 
     module.config(function (nixApiProvider) {
         // change to your credentials
-        nixApiProvider.setApiCredentials(null, null);
+        nixApiProvider.setApiCredentials('db67f640', '6d3a917f26933266438f8c90c4fb061f');
     });
 
 
     module.controller('MainCtrl', function ($scope, $filter, nixApi) {
-        // the way for demo to being usable in hosted version
-        $scope.credentials = {
-            appId:  null,
-            appKey: null,
-            change: function () {
-                nixApi.setApiCredentials(this.appId, this.appKey);
-            }
-        };
-
         $scope.columns = [
             {
                 header:     'qty',
@@ -68,16 +59,7 @@
         $scope.estimate = function estimate() {
             estimate.error = null;
             $scope.apiResponse = null;
-            nixApi(
-                '/estimated-nutrition/bulk',
-                {
-                    method:  'POST',
-                    data:    $scope.data,
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    }
-                }
-            )
+            nixApi.natural($scope.data)
                 .success(function (apiResponse) {
                     $scope.apiResponse = apiResponse;
                 })

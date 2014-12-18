@@ -9,8 +9,7 @@
 
     module.config(function (nixApiProvider, $locationProvider) {
         // change to your credentials
-        nixApiProvider.setApiCredentials(null, null);
-        nixApiProvider.setApiEndpoint('https://api0.nutritionix.com/v2');
+        nixApiProvider.setApiCredentials('db67f640', '6d3a917f26933266438f8c90c4fb061f');
         $locationProvider.html5Mode({enabled: true, requireBase: false});
     });
 
