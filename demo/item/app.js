@@ -31,6 +31,7 @@
 
         if (promise) {
             promise.then(function (item) {
+                var macromutrients = {};
                 if (item) {
                     $scope.item = item;
 
@@ -39,13 +40,21 @@
                         micro: []
                     };
 
+                    angular.forEach(nixApi.macronutrients, function(id){
+                        macromutrients[id] = null;
+                    });
+
                     angular.forEach($scope.item.label.nutrients, function (nutrient) {
-                        var index = nixApi.macronutrients.indexOf(nutrient.attr_id);
+                        var index = nixApi.macronutrients.indexOf(parseInt(nutrient.attr_id));
                         if (index !== -1) {
-                            $scope.nutrients.macro[index] = nutrient;
+                            macromutrients[index] = nutrient;
                         } else {
                             $scope.nutrients.micro.push(nutrient);
                         }
+                    });
+
+                    angular.forEach(macromutrients, function(nutrient){
+                        $scope.nutrients.macro.push(nutrient);
                     });
 
                     $scope.nutrients.macro = $filter('filter')($scope.nutrients.macro, function (element) {
