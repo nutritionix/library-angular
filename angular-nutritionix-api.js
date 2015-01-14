@@ -189,13 +189,23 @@
             /**
              * @ngdoc property
              * @propertyOf nix.api.service:nixApi
+             * @name nix.api.service:nixApi#calories_nutrient
+             * @type {number}
+             *
+             * @description
+             * **208** is an id of calories nutrient
+             */
+            nixApi.calories_nutrient = 208;
+
+            /**
+             * @ngdoc property
+             * @propertyOf nix.api.service:nixApi
              * @name nix.api.service:nixApi#macronutrients
              * @type {number[]}
              *
              * @description
              * List of ids of nutrients considered as  Macronutrients
              *
-             * - **208** calories
              * - **204** fat
              * - **606** satfat
              * - **205** totalcarb
@@ -203,8 +213,7 @@
              * - **269** sugar
              * - **203** protein
              */
-            nixApi.macronutrients = [208, 204, 606, 205, 291, 269, 203];
-
+            nixApi.macronutrients = [204, 606, 205, 291, 269, 203];
 
             /**
              * @ngdoc method

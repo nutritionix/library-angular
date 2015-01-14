@@ -62,6 +62,13 @@
 
         </div>
         <div class="col-md-4">
+            <h4 style="margin-bottom: 0">
+                <strong>{{nutrients.calories.name}}</strong>:
+                {{(nutrients.calories.value | number: 3) || '0'}}
+                {{nutrients.calories.unit}}
+            </h4>
+            <br/>
+
             <h4>
                 Macronutrients
             </h4>

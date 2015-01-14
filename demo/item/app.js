@@ -36,6 +36,7 @@
                     $scope.item = item;
 
                     $scope.nutrients = {
+                        calories: null,
                         macro: [],
                         micro: []
                     };
@@ -45,11 +46,16 @@
                     });
 
                     angular.forEach($scope.item.label.nutrients, function (nutrient) {
-                        var index = nixApi.macronutrients.indexOf(parseInt(nutrient.attr_id));
-                        if (index !== -1) {
-                            macromutrients[index] = nutrient;
+                        var index;
+                        if (parseInt(nutrient.attr_id) === nixApi.calories_nutrient) {
+                            $scope.nutrients.calories = nutrient;
                         } else {
-                            $scope.nutrients.micro.push(nutrient);
+                            index = nixApi.macronutrients.indexOf(parseInt(nutrient.attr_id));
+                            if (index !== -1) {
+                                macromutrients[index] = nutrient;
+                            } else {
+                                $scope.nutrients.micro.push(nutrient);
+                            }
                         }
                     });
 
